@@ -407,6 +407,10 @@ article.confirmation-page {
 
 @media print {
     article.confirmation-page {
+        max-width: 100%;
+        margin: 0;
+        font-size: 12px;
+
         .confirmation-actions {
             display: none;
         }
@@ -414,6 +418,24 @@ article.confirmation-page {
         .confirmation-header {
             background-color: white;
             border: 2px solid var(--clr-primary);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .confirmation-content {
+            gap: var(--space-md);
+        }
+
+        .details-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .detail-card,
+        .passenger-info-card,
+        .important-info {
+            box-shadow: none;
+            break-inside: avoid;
         }
     }
 }

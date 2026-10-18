@@ -31,10 +31,10 @@
                             <div class="ticket-content">
                                 <div class="ticket-header">
                                     <h3 class="ticket-name"><%= ticket.name %></h3>
-                                    <div class="ticket-price">
-                                        <span class="price-symbol">¥</span>
-                                        <span class="price-amount"><%= Number(ticket.price).toLocaleString() %></span>
-                                    </div>
+                                <div class="ticket-price">
+                                    <span class="price-symbol">$</span>
+                                    <span class="price-amount"><%= yenToUsd(ticket.price).toFixed(2) %></span>
+                                </div>
                                 </div>
                                 
                                 <p class="ticket-description"><%= ticket.description %></p>
@@ -170,11 +170,10 @@
                 </div>
                 <div class="summary-row">
                     <span class="summary-label">Price per Ticket:</span>
-                    <span class="summary-value" id="pricePerTicket"><%= ticketOptions && ticketOptions[0] ? '¥' + Number(ticketOptions[0].price).toLocaleString() : '¥14,400' %></span>
-                </div>
+                    <span class="summary-value" id="pricePerTicket"><%= ticketOptions && ticketOptions[0] ? '$' + yenToUsd(ticketOptions[0].price).toFixed(2) : '$0.00' %></span>
                 <div class="summary-row total">
                     <span class="summary-label">Total Amount:</span>
-                    <span class="summary-value" id="totalAmount"><%= ticketOptions && ticketOptions[0] ? '¥' + Number(ticketOptions[0].price).toLocaleString() : '¥14,400' %></span>
+                    <span class="summary-value" id="totalAmount"><%= ticketOptions && ticketOptions[0] ? '$' + yenToUsd(ticketOptions[0].price).toFixed(2) : '$0.00' %></span>
                 </div>
             </div>
         </section>
@@ -204,9 +203,11 @@
 
     const updateSummary = () => {
         passengerCountDisplay.textContent = passengerCount;
-        pricePerTicket.textContent = `¥${ticketPrice.toLocaleString()}`;
-        const total = ticketPrice * passengerCount;
-        totalAmount.textContent = `¥${total.toLocaleString()}`;
+        const priceUsd = ticketPrice * 0.0066;
+        pricePerTicket.textContent = `$${priceUsd.toFixed(2)}`;
+
+        const total = priceUsd * passengerCount;
+        totalAmount.textContent = `$${total.toFixed(2)}`;
     };
 
     const updatePassengerNumbers = () => {

@@ -1,3 +1,29 @@
+#filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    align-items: center;
+    margin-bottom: var(--space-lg);
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+
+    .filter-group:first-child {
+        justify-content: center;
+    }
+
+    .filter-group:nth-child(2) {
+        justify-content: center;
+    }
+
+    button {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+}
 .routes-grid {
     display: flex;
     flex-direction: column;
